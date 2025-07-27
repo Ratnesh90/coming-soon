@@ -25,8 +25,10 @@
     header, footer {
       text-align: center;
       padding: 20px;
-      background: rgba(255, 235, 255, 0.7);
-      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      backdrop-filter: blur(6px); /* BLUR effect */
+      animation: fadeIn 2s ease forwards;
     }
 
     .title {
@@ -37,6 +39,7 @@
       color: transparent;
       padding: 10px 20px;
       display: inline-block;
+      animation: fadeIn 2s ease forwards;
     }
 
     .coming-soon {
@@ -47,7 +50,7 @@
       background: rgba(255, 230, 250, 0.8);
       color: #6a1b9a;
       border-radius: 8px;
-      animation: pulseText 2s infinite alternate;
+      animation: pulseText 2s infinite alternate, fadeIn 2s ease forwards;
     }
 
     .tagline {
@@ -58,12 +61,21 @@
       background-color: rgba(255, 255, 200, 0.7);
       border-radius: 8px;
       color: #4a148c;
+      animation: fadeIn 2s ease forwards;
     }
 
     footer p {
       font-size: 1rem;
       font-weight: bold;
-      color: #4a148c;
+      color: #fff;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .info-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffdede;
+      margin-bottom: 8px;
     }
 
     .slideshow-container {
@@ -92,6 +104,11 @@
       to { transform: scale(1.1); opacity: 1; }
     }
 
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 600px) {
       .title {
         font-size: 2rem;
@@ -105,7 +122,7 @@
         font-size: 1rem;
       }
 
-      footer p {
+      footer p, .info-text {
         font-size: 0.9rem;
       }
     }
@@ -125,6 +142,7 @@
   </div>
 
   <footer>
+    <p class="info-text">Crafted with love for modern Indian women. Explore elegance, grace & tradition.</p>
     <p>#StyleWithChaah</p>
     <p>For Enquiry: <strong>chaah.tech@gmail.com</strong></p>
   </footer>
