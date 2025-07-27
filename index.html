@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chaah Fashion Launch</title>
+  <title>Chaah Fashion - Coming Soon</title>
   <style>
     * {
       box-sizing: border-box;
@@ -11,86 +11,100 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fefbff;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    header, footer {
-      background: #fff;
-      padding: 20px;
-      text-align: center;
-      z-index: 1;
-    }
-
-    header h1 {
-      font-size: 2.2rem;
-      font-weight: bold;
-      background: linear-gradient(to right, #8e2de2, #4a00e0);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: fadeIn 2s infinite alternate;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      color: #7e22ce;
-      font-weight: bold;
-      margin-top: 10px;
-      animation: slideIn 1.5s ease-out;
-    }
-
-    .image-container {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
     }
 
-    .image-container img {
-      max-height: 100%;
-      max-width: 100%;
-      object-fit: contain;
-      animation: zoomIn 6s infinite alternate;
-      border-radius: 10px;
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #d1c4e9, #7e57c2);
+      color: #fff;
+      text-align: center;
+    }
+
+    .slideshow-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .slideshow-container img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slideshow-container img.active {
+      opacity: 1;
+    }
+
+    header {
+      margin-top: 30px;
+      z-index: 1;
+    }
+
+    .coming-soon {
+      font-size: 3.5rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #f3e5f5, #ce93d8, #ba68c8);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: pulseText 2s infinite alternate;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 10px;
+      animation: fadeInUp 2s ease forwards;
     }
 
     footer {
-      border-top: 2px solid #e1c8ff;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
     }
 
     footer p {
       font-size: 1rem;
       font-weight: bold;
-      color: #6a1b9a;
-      margin: 5px 0;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0.6; }
-      to { opacity: 1; }
+    @keyframes pulseText {
+      from { transform: scale(1); opacity: 0.8; }
+      to { transform: scale(1.1); opacity: 1; }
     }
 
-    @keyframes slideIn {
-      from { transform: translateY(-20px); opacity: 0; }
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
-    @keyframes zoomIn {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.02); }
-    }
-
-    /* Responsive text sizing */
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
+      .coming-soon {
+        font-size: 2rem;
       }
-      header p, footer p {
+
+      .tagline {
+        font-size: 1rem;
+      }
+
+      footer p {
         font-size: 0.9rem;
       }
     }
@@ -98,19 +112,32 @@
 </head>
 <body>
 
-  <header>
-    <h1>Chaah Fashion – Coming Soon</h1>
-    <p>Unveiling timeless elegance in women’s fashion</p>
-  </header>
-
-  <div class="image-container">
-    <img src="chaah-fashion-poster1.jpeg" alt="Chaah Fashion Poster" />
+  <div class="slideshow-container">
+    <img src="chaah-fashion-poster1.jpeg" class="slide active" alt="Poster 1">
+    <img src="chaah-fashion-poster2.jpeg" class="slide" alt="Poster 2">
   </div>
+
+  <header>
+    <div class="coming-soon">Chaah Fashion – Coming Soon</div>
+    <div class="tagline">Unveiling timeless elegance in women’s fashion</div>
+  </header>
 
   <footer>
     <p>#StyleWithChaah</p>
-    <p>For Enquiry: <strong>chaahfashion@gmail.com</strong></p>
+    <p>For Enquiry: <strong>chaah.tech@gmail.com</strong></p>
   </footer>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    setInterval(() => {
+      slides.forEach((img, i) => {
+        img.classList.toggle("active", i === index);
+      });
+      index = (index + 1) % slides.length;
+    }, 4000); // Change every 4 seconds
+  </script>
 
 </body>
 </html>
