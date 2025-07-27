@@ -50,17 +50,19 @@
     }
 
     .tagline {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: #444;
       margin-top: 30px;
-      animation: fadeInUp 1.8s ease;
+      font-weight: 600;
+      animation: slideIn 2.5s ease-in-out;
     }
 
     .contact {
-      font-size: 1rem;
-      margin-top: 15px;
-      color: #666;
-      animation: fadeInUp 2s ease;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #555;
+      animation: flash 2s ease-in-out infinite alternate;
     }
 
     /* Animations */
@@ -75,21 +77,26 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; }
+      100% { opacity: 0.6; }
     }
 
     @media (max-width: 600px) {
       h1 { font-size: 2rem; }
       .coming-soon { font-size: 1.5rem; }
       .tagline { font-size: 1rem; }
-      .contact { font-size: 0.9rem; }
+      .contact { font-size: 1rem; }
     }
   </style>
 </head>
@@ -106,13 +113,12 @@
 
   <!-- Tagline -->
   <p class="tagline">
-    We’re launching something amazing for women’s fashion. <br /> Stay tuned!
+    Elegance. Confidence. Redefined for the Modern Woman.
   </p>
 
   <!-- Contact Details -->
   <p class="contact">
-    For Inquiries: <br/>
-    9582100524 &nbsp; | &nbsp; chaah.tech@gmail.com
+    For Inquiries: 9582100524 | chaah.tech@gmail.com
   </p>
 </body>
 </html>
