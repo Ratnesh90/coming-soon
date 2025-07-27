@@ -3,175 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chaah Fashion - Coming Soon</title>
+  <title>Chaah Fashion Launch</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
+    body {
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-      background-color: #000;
-      color: #fff;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
+      background-color: #fefbff;
+      display: flex;
+      flex-direction: column;
       height: 100vh;
     }
 
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .slide.active {
-      opacity: 1;
+    header, footer {
+      background: #fff;
+      padding: 20px;
+      text-align: center;
       z-index: 1;
     }
 
-    header {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      text-align: center;
-      background: rgba(0,0,0,0.6);
-      padding: 10px 0;
-      z-index: 2;
-    }
-
     header h1 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: #ffeb3b;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-      animation: glow 1.5s infinite alternate;
-    }
-
-    .main-content {
-      position: absolute;
-      top: 30%;
-      width: 100%;
-      text-align: center;
-      z-index: 2;
-    }
-
-    .main-content h2 {
-      font-size: 3rem;
+      font-size: 2.2rem;
       font-weight: bold;
-      animation: fadeInDown 1.5s ease;
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: fadeIn 2s infinite alternate;
     }
 
-    .tagline {
-      font-size: 1.5rem;
-      margin-top: 15px;
-      animation: slideIn 2s ease;
-      font-weight: 500;
+    header p {
+      font-size: 1.1rem;
+      color: #7e22ce;
+      font-weight: bold;
+      margin-top: 10px;
+      animation: slideIn 1.5s ease-out;
+    }
+
+    .image-container {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      animation: zoomIn 6s infinite alternate;
+      border-radius: 10px;
     }
 
     footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 15px 0;
-      background: rgba(0,0,0,0.6);
-      text-align: center;
-      z-index: 2;
+      border-top: 2px solid #e1c8ff;
     }
 
-    footer .footer-tagline {
-      font-size: 1.1rem;
-      font-weight: 600;
-      animation: pulse 1.5s infinite;
-    }
-
-    footer .email-text {
-      margin-top: 5px;
+    footer p {
       font-size: 1rem;
       font-weight: bold;
-      animation: fadeInUp 2s ease-in;
+      color: #6a1b9a;
+      margin: 5px 0;
     }
 
-    /* Animations */
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #fff, 0 0 10px #f7f779; }
-      100% { text-shadow: 0 0 10px #fff, 0 0 20px #fce303; }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.9; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
     }
 
     @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-60px); }
-      to { opacity: 1; transform: translateX(0); }
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes zoomIn {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.02); }
     }
 
-    @media (max-width: 768px) {
-      header h1 { font-size: 1.8rem; }
-      .main-content h2 { font-size: 2rem; }
-      .tagline { font-size: 1.1rem; }
-      footer .footer-tagline { font-size: 1rem; }
-      footer .email-text { font-size: 0.9rem; }
+    /* Responsive text sizing */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p, footer p {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="slideshow-container">
-    <!-- Sliding Backgrounds -->
-    <div class="slide active" style="background-image: url('chaah-fashion-poster.jpeg');"></div>
-    <div class="slide" style="background-image: url('chaah-fashion-poster1.jpeg');"></div>
 
-    <!-- Header -->
-    <header>
-      <h1>✨ COMING SOON ✨</h1>
-    </header>
+  <header>
+    <h1>Chaah Fashion – Coming Soon</h1>
+    <p>Unveiling timeless elegance in women’s fashion</p>
+  </header>
 
-    <!-- Main Overlay -->
-    <div class="main-content">
-      <h2>Chaah Fashion</h2>
-      <div class="tagline">Elegance. Confidence. Redefined for the Modern Woman.</div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-tagline">A New Era in Women's Fashion Awaits You</div>
-      <div class="email-text">For Enquiries: <strong>chaah.tech@gmail.com</strong></div>
-    </footer>
+  <div class="image-container">
+    <img src="chaah-fashion-poster1.jpeg" alt="Chaah Fashion Poster" />
   </div>
 
-  <!-- JavaScript for slideshow -->
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
+  <footer>
+    <p>#StyleWithChaah</p>
+    <p>For Enquiry: <strong>chaahfashion@gmail.com</strong></p>
+  </footer>
 
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 5000);
-  </script>
 </body>
 </html>
