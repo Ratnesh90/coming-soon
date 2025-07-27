@@ -13,6 +13,7 @@
 
     html, body {
       height: 100%;
+      width: 100%;
       font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
     }
@@ -22,13 +23,13 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(135deg, #d1c4e9, #7e57c2);
-      color: #fff;
+      background: linear-gradient(135deg, #f3e5f5, #fce4ec);
+      position: relative;
       text-align: center;
     }
 
     .slideshow-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
@@ -38,10 +39,10 @@
     }
 
     .slideshow-container img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
+      position: absolute;
       opacity: 0;
       transition: opacity 2s ease-in-out;
     }
@@ -51,29 +52,48 @@
     }
 
     header {
-      margin-top: 30px;
+      margin-top: 50px;
       z-index: 1;
     }
 
-    .coming-soon {
+    .title {
       font-size: 3.5rem;
       font-weight: bold;
-      background: linear-gradient(to right, #f3e5f5, #ce93d8, #ba68c8);
+      background: linear-gradient(to right, #d500f9, #ff4081);
       -webkit-background-clip: text;
       color: transparent;
+      padding: 10px 20px;
+      border-radius: 12px;
+      background-color: rgba(255, 240, 250, 0.7);
+      display: inline-block;
+      animation: fadeInDown 2s ease;
+    }
+
+    .coming-soon {
+      margin-top: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      background: rgba(255, 230, 250, 0.8);
+      color: #6a1b9a;
+      border-radius: 8px;
       animation: pulseText 2s infinite alternate;
     }
 
     .tagline {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: bold;
       margin-top: 10px;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 200, 0.7);
+      border-radius: 8px;
+      color: #4a148c;
       animation: fadeInUp 2s ease forwards;
     }
 
     footer {
       padding: 20px;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(255, 235, 255, 0.6);
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -83,6 +103,7 @@
     footer p {
       font-size: 1rem;
       font-weight: bold;
+      color: #4a148c;
     }
 
     @keyframes pulseText {
@@ -95,9 +116,18 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
+    @keyframes fadeInDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     @media (max-width: 600px) {
-      .coming-soon {
+      .title {
         font-size: 2rem;
+      }
+
+      .coming-soon {
+        font-size: 1.5rem;
       }
 
       .tagline {
@@ -113,12 +143,13 @@
 <body>
 
   <div class="slideshow-container">
-    <img src="chaah-fashion-poster1.jpeg" class="slide active" alt="Poster 1">
-    <img src="chaah-fashion-poster.jpeg" class="slide" alt="Poster 2">
+    <img src="chaah-fashion-poster.jpeg" class="slide active" alt="Poster 1">
+    <img src="chaah-fashion-poster1.jpeg" class="slide" alt="Poster 2">
   </div>
 
   <header>
-    <div class="coming-soon">Chaah Fashion – Coming Soon</div>
+    <div class="title">Chaah Fashion</div>
+    <div class="coming-soon">✨ Coming Soon ✨</div>
     <div class="tagline">Unveiling timeless elegance in women’s fashion</div>
   </header>
 
@@ -136,7 +167,7 @@
         img.classList.toggle("active", i === index);
       });
       index = (index + 1) % slides.length;
-    }, 4000); // Change every 4 seconds
+    }, 4000);
   </script>
 
 </body>
