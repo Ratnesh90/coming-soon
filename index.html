@@ -13,64 +13,34 @@
 
     html, body {
       height: 100%;
-      width: 100%;
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
     }
 
     body {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
       background: linear-gradient(135deg, #f3e5f5, #fce4ec);
-      position: relative;
+    }
+
+    header, footer {
       text-align: center;
-    }
-
-    .slideshow-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .slideshow-container img {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      position: absolute;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-
-    .slideshow-container img.active {
-      opacity: 1;
-    }
-
-    header {
-      margin-top: 50px;
+      padding: 20px;
+      background: rgba(255, 235, 255, 0.7);
       z-index: 1;
     }
 
     .title {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: bold;
       background: linear-gradient(to right, #d500f9, #ff4081);
       -webkit-background-clip: text;
       color: transparent;
       padding: 10px 20px;
-      border-radius: 12px;
-      background-color: rgba(255, 240, 250, 0.7);
       display: inline-block;
-      animation: fadeInDown 2s ease;
     }
 
     .coming-soon {
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 2rem;
       font-weight: bold;
       padding: 10px 20px;
@@ -88,16 +58,6 @@
       background-color: rgba(255, 255, 200, 0.7);
       border-radius: 8px;
       color: #4a148c;
-      animation: fadeInUp 2s ease forwards;
-    }
-
-    footer {
-      padding: 20px;
-      background: rgba(255, 235, 255, 0.6);
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      z-index: 1;
     }
 
     footer p {
@@ -106,19 +66,30 @@
       color: #4a148c;
     }
 
+    .slideshow-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slideshow-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slideshow-container img.active {
+      opacity: 1;
+    }
+
     @keyframes pulseText {
       from { transform: scale(1); opacity: 0.8; }
       to { transform: scale(1.1); opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeInDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
     }
 
     @media (max-width: 600px) {
@@ -127,7 +98,7 @@
       }
 
       .coming-soon {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
 
       .tagline {
@@ -142,16 +113,16 @@
 </head>
 <body>
 
-  <div class="slideshow-container">
-    <img src="chaah-fashion-poster.jpeg" class="slide active" alt="Poster 1">
-    <img src="chaah-fashion-poster1.jpeg" class="slide" alt="Poster 2">
-  </div>
-
   <header>
     <div class="title">Chaah Fashion</div>
     <div class="coming-soon">✨ Coming Soon ✨</div>
     <div class="tagline">Unveiling timeless elegance in women’s fashion</div>
   </header>
+
+  <div class="slideshow-container">
+    <img src="chaah-fashion-poster1.jpeg" class="slide active" alt="Poster 1">
+    <img src="chaah-fashion-poster.jpeg" class="slide" alt="Poster 2">
+  </div>
 
   <footer>
     <p>#StyleWithChaah</p>
