@@ -19,18 +19,27 @@
     }
 
     body {
-      display: flex;
-      flex-direction: column;
+      position: relative;
     }
 
     header, footer {
-      position: relative;
+      position: absolute;
+      left: 0;
+      right: 0;
       z-index: 10;
       padding: 20px;
       text-align: center;
-      backdrop-filter: blur(12px);
-      background-color: rgba(0, 0, 0, 0.3); /* Crystal dark glass effect */
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3); /* crystal black overlay */
       color: #fff;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
     }
 
     .header-content, .footer-content {
@@ -43,13 +52,16 @@
       background: linear-gradient(to right, #e91e63, #9c27b0);
       -webkit-background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
     }
 
     .coming-soon {
       margin-top: 10px;
       font-size: 2rem;
       font-weight: bold;
-      color: #fff;
+      background-color: rgba(255, 192, 203, 0.4); /* soft pink */
+      padding: 6px 12px;
+      border-radius: 8px;
       animation: pulseText 2s infinite alternate;
     }
 
@@ -58,21 +70,27 @@
       font-weight: 500;
       margin-top: 8px;
       color: #ffe;
+      background-color: rgba(255, 255, 0, 0.2); /* light yellow */
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 6px;
     }
 
     .slideshow-container {
-      flex: 1;
-      position: relative;
-      width: 100%;
-      height: calc(100vh - 140px); /* 140px = approx header + footer height */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
       overflow: hidden;
     }
 
     .slideshow-container img {
-      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      position: absolute;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
     }
@@ -86,6 +104,7 @@
       color: #fff;
       font-weight: 500;
       margin: 5px 0;
+      text-shadow: 0 0 4px rgba(0,0,0,0.8);
     }
 
     @keyframes pulseText {
@@ -108,6 +127,11 @@
 </head>
 <body>
 
+  <div class="slideshow-container">
+    <img src="chaah-fashion-poster1.jpeg" class="slide active" alt="Poster 1" />
+    <img src="chaah-fashion-poster.jpeg" class="slide" alt="Poster 2" />
+  </div>
+
   <header>
     <div class="header-content">
       <div class="title">Chaah Fashion</div>
@@ -115,11 +139,6 @@
       <div class="tagline">Unveiling timeless elegance in women’s fashion</div>
     </div>
   </header>
-
-  <div class="slideshow-container">
-    <img src="chaah-fashion-poster1.jpeg" class="slide active" alt="Poster 1" />
-    <img src="chaah-fashion-poster.jpeg" class="slide" alt="Poster 2" />
-  </div>
 
   <footer>
     <div class="footer-content">
