@@ -5,120 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chaah Fashion - Coming Soon</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #fff7f5;
+    }
+
+    body, html {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      color: #333;
+      overflow: hidden;
+    }
+
+    .slideshow-container {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .email-text {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .logo {
-      width: 120px;
-      margin-top: 20px;
-      animation: fadeInDown 1.2s ease;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      color: #d63384;
-      margin: 10px 0;
-      animation: fadeInDown 1.4s ease;
-    }
-
-    .coming-soon {
-      font-size: 2rem;
-      color: #ff5733;
+      font-size: 1.2rem;
+      color: #fff;
       font-weight: bold;
-      margin: 10px 0 30px;
-      animation: pulse 1.5s infinite;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+      animation: fadeInUp 2s ease-in;
     }
 
-    .poster {
-      width: 90%;
-      max-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      animation: fadeIn 2s ease;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .tagline {
-      font-size: 1.4rem;
-      color: #444;
-      margin-top: 30px;
-      font-weight: 600;
-      animation: slideIn 2.5s ease-in-out;
-    }
-
-    .contact {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #555;
-      animation: flash 2s ease-in-out infinite alternate;
-    }
-
-    /* Animations */
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-100px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes flash {
-      0% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .coming-soon { font-size: 1.5rem; }
-      .tagline { font-size: 1rem; }
-      .contact { font-size: 1rem; }
+    @media (max-width: 768px) {
+      .email-text {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Logo and Title -->
-  <img src="chaah-fashion-logo-resized.jpeg" alt="Chaah Fashion Logo" class="logo" />
-  <h1>Chaah Fashion</h1>
+  <div class="slideshow-container">
+    <div class="slide active" style="background-image: url('chaah-fashion-poster.jpeg');"></div>
+    <div class="slide" style="background-image: url('chaah-fashion-poster1.jpeg');"></div>
+    <div class="email-text">For inquiries: chaah.tech@gmail.com</div>
+  </div>
 
-  <!-- Animated Coming Soon -->
-  <div class="coming-soon">Coming Soon!</div>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
 
-  <!-- Poster Image -->
-  <img src="chaah-fashion-poster.jpeg" alt="Chaah Fashion Poster" class="poster" />
-
-  <!-- Tagline -->
-  <p class="tagline">
-    Elegance. Confidence. Redefined for the Modern Woman.
-  </p>
-
-  <!-- Contact Details -->
-  <p class="contact">
-    For Inquiries: 9582100524 | chaah.tech@gmail.com
-  </p>
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000); // 4 seconds delay
+  </script>
 </body>
 </html>
