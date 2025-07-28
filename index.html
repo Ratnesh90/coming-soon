@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chaah Fashion Coming Soon</title>
+  <title>Chaah Fashion - Coming Soon</title>
   <style>
     * {
       margin: 0;
@@ -12,153 +12,112 @@
     }
 
     html, body {
-      width: 100%;
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background: #000;
+      background-color: #000;
       overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body {
+      position: relative;
     }
 
     header {
-      width: 100%;
-      padding: 20px 10px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      text-align: center;
       position: sticky;
       top: 0;
-      z-index: 10;
+      width: 100%;
+      z-index: 100;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
       border-bottom: 2px solid gold;
+      padding-bottom: 5px;
     }
 
     .title {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: bold;
-      background: linear-gradient(90deg, #ff66cc, #ffccff);
+      background: linear-gradient(to right, #e91e63, #9c27b0);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInUp 1.2s ease-out forwards;
+      color: transparent;
+      margin: 10px 0;
+      animation: fadeInDown 1.5s ease-out;
     }
 
-    .coming-soon-ribbon {
+    .ribbon {
       width: 100%;
-      background: linear-gradient(135deg, #ffe6f9, #fff0f5);
-      padding: 10px 0;
-      margin-top: 10px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(255, 192, 203, 0.6);
+      background: linear-gradient(90deg, rgba(255,182,193,0.3), rgba(255,192,203,0.5), rgba(255,182,193,0.3));
+      padding: 8px 0;
+      text-align: center;
+      backdrop-filter: blur(5px);
     }
 
-    .coming-soon-text {
-      font-size: 1.8rem;
+    .ribbon span {
       font-weight: bold;
-      color: #ff0033;
-      text-shadow: 0 0 5px #fff, 0 0 10px #ff0033;
-      animation: glitter 2s infinite linear alternate, pulseText 3s infinite ease-in-out;
+      color: red;
+      font-size: 1.6rem;
+      animation: glitter 1s infinite alternate;
+      text-shadow: 0 0 5px rgba(255,0,0,0.5), 0 0 10px rgba(255,0,0,0.8);
     }
 
-    .image-container {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .slideshow {
+    .slideshow-container {
       position: relative;
       width: 100%;
-      height: 1280px;
     }
 
-    .slideshow img {
-      position: absolute;
+    .slide {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: slideShow 12s infinite, zoomFade 12s infinite;
-    }
-
-    .slideshow img:nth-child(1) {
-      animation-delay: 0s, 0s;
-    }
-
-    .slideshow img:nth-child(2) {
-      animation-delay: 6s, 6s;
+      max-width: 100%;
+      display: block;
+      animation: fadeInImage 2s ease-in-out;
     }
 
     footer {
+      position: relative;
+      bottom: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
       text-align: center;
-      padding: 15px;
-      font-size: 1rem;
+      padding: 15px 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      z-index: 10;
       border-top: 2px solid gold;
     }
 
-    .tagline {
+    .footer-line {
+      font-size: 1.2rem;
+      color: #ffe;
+      margin-bottom: 5px;
+    }
+
+    .stay-tuned {
+      font-size: 1rem;
       font-style: italic;
-      font-weight: 600;
-      animation: fadeIn 2s ease-in;
-      margin-bottom: 6px;
+      color: #ffddaa;
+      text-shadow: 0 0 5px rgba(255, 223, 186, 0.8);
     }
 
-    .email {
-      font-weight: bold;
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-        filter: blur(6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+    @keyframes fadeInImage {
+      from { opacity: 0.5; transform: scale(1.02); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @keyframes glitter {
-      0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0033; }
-      50% { text-shadow: 0 0 10px #fff, 0 0 15px #ff0033; }
-      100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0033; }
+      0% { opacity: 0.8; text-shadow: 0 0 5px red; }
+      100% { opacity: 1; text-shadow: 0 0 12px red, 0 0 20px red; }
     }
 
-    @keyframes pulseText {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        filter: blur(4px);
-      }
-      to {
-        opacity: 1;
-        filter: blur(0);
-      }
-    }
-
-    @keyframes slideShow {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      40% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 0; }
-    }
-
-    @keyframes zoomFade {
-      0%, 10% {
-        transform: scale(1);
-      }
-      25%, 40% {
-        transform: scale(1.05);
-      }
-      50%, 100% {
-        transform: scale(1);
-      }
+    @media (max-width: 600px) {
+      .title { font-size: 2rem; }
+      .ribbon span { font-size: 1.2rem; }
+      .footer-line { font-size: 1rem; }
+      .stay-tuned { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -166,21 +125,17 @@
 
   <header>
     <div class="title">Chaah Fashion</div>
-    <div class="coming-soon-ribbon">
-      <div class="coming-soon-text">✨ Coming Soon ✨</div>
-    </div>
+    <div class="ribbon"><span>✨ Coming Soon ✨</span></div>
   </header>
 
-  <div class="image-container">
-    <div class="slideshow">
-      <img src="chaah-fashion-poster3.jpg" alt="Poster 1" />
-      <img src="chaah-fashion-poster2.jpg" alt="Poster 2" />
-    </div>
+  <div class="slideshow-container">
+    <img src="chaah-fashion-poster3.jpg" alt="Poster 1" class="slide"/>
+    <img src="chaah-fashion-poster2.jpg" alt="Poster 2" class="slide"/>
   </div>
 
   <footer>
-    <div class="tagline">#StayTuned — We’re unveiling something stunning in women’s fashion!</div>
-    <div class="email">📩 chaah.fashion@gmail.com</div>
+    <div class="footer-line">For Enquiry: <strong>chaah.fashion@gmail.com</strong></div>
+    <div class="stay-tuned">💫 Stay Tuned for the Grand Reveal 💫</div>
   </footer>
 
 </body>
