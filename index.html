@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chaah Fashion - Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaah Fashion Coming Soon</title>
   <style>
     * {
       margin: 0;
@@ -11,143 +11,153 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    header, footer {
-      position: fixed;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.4); /* crystal black */
-      color: #fff;
-    }
-
-    header {
-      top: 0;
-      padding: 20px 10px;
-      height: 120px;
-    }
-
-    footer {
-      bottom: 0;
-      padding: 20px 10px;
-      height: 120px;
-    }
-
-    main {
-      padding-top: 140px;   /* space for header */
-      padding-bottom: 140px; /* space for footer */
-    }
-
-    .slideshow-container {
+    html, body {
       width: 100%;
-      max-width: 100%;
-      margin: auto;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
     }
 
-    .slide {
-      display: none;
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
+      z-index: -1;
     }
 
-    .slide.active {
-      display: block;
-      animation: fadeIn 1s ease-in-out;
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: slideShow 12s infinite;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .slideshow img:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .slideshow img:nth-child(2) {
+      animation-delay: 6s;
+    }
+
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      40% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    header {
+      position: relative;
+      width: 100%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      text-align: center;
     }
 
     .title {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: bold;
-      background: linear-gradient(to right, #e91e63, #ffc107);
+      background: linear-gradient(90deg, #a64ca6, #ffc0cb);
       -webkit-background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 2s ease-out forwards;
     }
 
-    .coming-soon {
+    .coming-soon-ribbon {
       margin-top: 10px;
-      font-size: 2rem;
-      font-weight: bold;
-      background-color: rgba(255, 192, 203, 0.4);
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 10px;
-      animation: pulse 2s infinite alternate;
-      backdrop-filter: blur(5px);
-    }
-
-    @keyframes pulse {
-      from { transform: scale(1); opacity: 0.9; }
-      to { transform: scale(1.05); opacity: 1; }
-    }
-
-    .info-text {
-      font-size: 1rem;
+      padding: 8px 0;
+      background: linear-gradient(90deg, #ffc0cb 0%, #ffe6f0 100%);
       color: #fff;
-      font-weight: 500;
-      margin-top: 8px;
-      text-shadow: 0 0 4px rgba(0,0,0,0.8);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 0 8px rgba(255, 182, 193, 0.8);
+      animation: sparkle 2s infinite linear alternate;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1rem;
     }
 
     .tagline {
-      font-size: 1.1rem;
       font-style: italic;
-      color: #ffccff;
-      margin-top: 10px;
+      font-weight: 600;
+      animation: fadeIn 2s ease-in;
+      margin-bottom: 6px;
     }
 
-    @media (max-width: 600px) {
-      .title { font-size: 2rem; }
-      .coming-soon { font-size: 1.3rem; }
-      .info-text, .tagline { font-size: 0.9rem; }
+    .email {
+      font-weight: bold;
+    }
+
+    @keyframes sparkle {
+      0% { background-position: 0% center; }
+      100% { background-position: 100% center; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        filter: blur(0);
+      }
     }
   </style>
 </head>
 <body>
 
+  <div class="slideshow">
+    <img src="chaah-fashion-poster3.jpg" alt="Fashion Poster 1">
+    <img src="chaah-fashion-poster2.jpg" alt="Fashion Poster 2">
+  </div>
+
   <header>
     <div class="title">Chaah Fashion</div>
-    <div class="coming-soon">✨ Coming Soon ✨</div>
+    <div class="coming-soon-ribbon">✨ Coming Soon ✨</div>
   </header>
 
-  <main>
-    <div class="slideshow-container">
-      <img src="chaah-fashion-poster2.jpg" class="slide active" alt="Poster 1" />
-      <img src="chaah-fashion-poster3.jpg" class="slide" alt="Poster 2" />
-    </div>
-  </main>
-
   <footer>
-    <div class="info-text">For Enquiry: <strong>chaahfashion@gmail.com</strong></div>
-    <div class="tagline">Stay tuned for the fashion revolution!</div>
+    <div class="tagline">#StayTuned — We’re unveiling something stunning in women’s fashion!</div>
+    <div class="email">📩 chaah.fashion@gmail.com</div>
   </footer>
-
-  <script>
-    const slides = document.querySelectorAll(".slide");
-    let index = 0;
-
-    setInterval(() => {
-      slides.forEach((img, i) => {
-        img.classList.remove("active");
-        if (i === index) img.classList.add("active");
-      });
-      index = (index + 1) % slides.length;
-    }, 4000);
-  </script>
 
 </body>
 </html>
