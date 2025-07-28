@@ -15,6 +15,7 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #000;
       color: #fff;
+      overflow-x: hidden;
     }
 
     header, footer {
@@ -31,18 +32,18 @@
     header {
       top: 0;
       padding: 20px 10px;
-      height: 80px;
+      height: 120px;
     }
 
     footer {
       bottom: 0;
       padding: 20px 10px;
-      height: 100px;
+      height: 120px;
     }
 
     main {
-      padding-top: 100px;   /* space for header */
-      padding-bottom: 120px; /* space for footer */
+      padding-top: 140px;   /* space for header */
+      padding-bottom: 140px; /* space for footer */
     }
 
     .slideshow-container {
@@ -68,31 +69,20 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .text-overlay {
-      position: absolute;
-      top: 40%;
-      width: 100%;
-      text-align: center;
-      z-index: 10;
-      color: white;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    }
-
-    .text-overlay .title {
+    .title {
       font-size: 3rem;
       font-weight: bold;
       background: linear-gradient(to right, #e91e63, #ffc107);
       -webkit-background-clip: text;
       color: transparent;
       filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
-      backdrop-filter: blur(5px);
     }
 
-    .text-overlay .coming-soon {
-      margin-top: 20px;
+    .coming-soon {
+      margin-top: 10px;
       font-size: 2rem;
       font-weight: bold;
-      background-color: rgba(255, 192, 203, 0.4); /* pinkish */
+      background-color: rgba(255, 192, 203, 0.4);
       display: inline-block;
       padding: 10px 20px;
       border-radius: 10px;
@@ -113,10 +103,17 @@
       text-shadow: 0 0 4px rgba(0,0,0,0.8);
     }
 
+    .tagline {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #ffccff;
+      margin-top: 10px;
+    }
+
     @media (max-width: 600px) {
-      .text-overlay .title { font-size: 2rem; }
-      .text-overlay .coming-soon { font-size: 1.3rem; }
-      .info-text { font-size: 0.9rem; }
+      .title { font-size: 2rem; }
+      .coming-soon { font-size: 1.3rem; }
+      .info-text, .tagline { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -124,21 +121,19 @@
 
   <header>
     <div class="title">Chaah Fashion</div>
+    <div class="coming-soon">✨ Coming Soon ✨</div>
   </header>
 
   <main>
     <div class="slideshow-container">
-      <div class="text-overlay">
-        <div class="title">Chaah Fashion</div>
-        <div class="coming-soon">✨ Coming Soon ✨</div>
-      </div>
-      <img src="chaah-fashion-poster2.jpg" class="slide active" alt="Poster 1" />
-      <img src="chaah-fashion-poster3.jpg" class="slide" alt="Poster 2" />
+      <img src="chaah-fashion-poster1.jpeg" class="slide active" alt="Poster 1" />
+      <img src="chaah-fashion-poster.jpeg" class="slide" alt="Poster 2" />
     </div>
   </main>
 
   <footer>
     <div class="info-text">For Enquiry: <strong>chaahfashion@gmail.com</strong></div>
+    <div class="tagline">Stay tuned for the fashion revolution!</div>
   </footer>
 
   <script>
